@@ -197,6 +197,7 @@ public class paginaPpal extends javax.swing.JFrame {
     private void botonLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrarActionPerformed
         JOptionPane.showMessageDialog(this, "Intentto de Login con los datos:\n Usuario: "+ loginUser.getText()+ " Password: "+ String.valueOf(loginPW.getPassword() ));
         new menuPpal.menu().setVisible(true);
+        dispose();
     }//GEN-LAST:event_botonLoginEntrarActionPerformed
 //
 //    /**
