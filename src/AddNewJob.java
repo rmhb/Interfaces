@@ -21,7 +21,8 @@ public class AddNewJob extends javax.swing.JFrame {
     public AddNewJob() {
         initComponents();
         curro = new ArrayList<jobs>();
-        populateArrayList();
+//        populateArrayList();
+        curro = otrasClases.Ficheros.recuperaDatosFichero("Jobs.dat", curro);
         
     }
     public void populateArrayList(){
@@ -96,7 +97,7 @@ public class AddNewJob extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save.png"))); // NOI18N
         jButton1.setText("Save");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +162,9 @@ public class AddNewJob extends javax.swing.JFrame {
             String salary = jobSalary.getText().trim();
             jobs j = new jobs(Double.parseDouble(salary), name);
             curro.add(j);
-            saveJobsToFile();
+            // saveJobsToFile();
+            otrasClases.Ficheros.saveClaseToFile("Jobs.dat", curro);
+            this.dispose();
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

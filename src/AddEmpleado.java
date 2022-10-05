@@ -22,7 +22,7 @@ public class AddEmpleado extends javax.swing.JFrame {
         
         String [] jobsArray = new String[curro.size()];
         for (int i=0 ; i<curro.size() ; i++){
-            jobsArray[i] = curro.get(i).getNameOfJob() + ", R" + formatter.format(curro.get(i).getSalary());
+            jobsArray[i] = curro.get(i).getNameOfJob() + ", Salario: " + formatter.format(curro.get(i).getSalary());
         }
          listaTrabajos.setModel(new javax.swing.DefaultComboBoxModel<>(jobsArray));
     }
@@ -121,7 +121,7 @@ public class AddEmpleado extends javax.swing.JFrame {
         apeEmpleado.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save.png"))); // NOI18N
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,7 +200,9 @@ public class AddEmpleado extends javax.swing.JFrame {
             String surname = apeEmpleado.getText().trim();
             int idEmpleado = Integer.parseInt(numEmpleado.getText().trim());
             int jobIndex = listaTrabajos.getSelectedIndex();
+         //   System.out.println("Job Index. "+jobIndex);
             jobs trabajo = curro.get(jobIndex);
+         //  System.out.println(trabajo.getNameOfJob());
             Empleado emp = new Empleado(name, surname, trabajo, idEmpleado);
             trabajador.add(emp);
             saveEmployeeToFile();

@@ -37,6 +37,8 @@ public class jobs implements Serializable{
         this.nameOfJob = nameOfJob;
     }
     public boolean equalsJobs(jobs job){
+       // System.out.println("compara Jobs salary "+this.salary+" "+ job.salary);
+      //  System.out.println("compara Jobs nombre "+this.nameOfJob+" "+ job.nameOfJob);
         if (this.salary == job.salary && this.nameOfJob.equals(job.nameOfJob) ) return true;
         else return false;
     }

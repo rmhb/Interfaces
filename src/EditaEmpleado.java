@@ -1,4 +1,4 @@
-import java.io.*;
+ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import java.text.*;
@@ -19,7 +19,8 @@ public class EditaEmpleado extends javax.swing.JFrame {
         formatter = new DecimalFormat("#,###.00 €");
         curro = new ArrayList<jobs>();
         trabajador = new ArrayList<Empleado>();
-        populateArrayList();
+        //populateArrayList();
+        recuperaDatos();
         
         String [] jobsArray = new String[curro.size()];
         for (int i=0 ; i<curro.size() ; i++){
@@ -37,6 +38,10 @@ public class EditaEmpleado extends javax.swing.JFrame {
 //         Empleado emp = trabajador.get(empleadoIndex);
 //         numEmpleado.setText( String.valueOf(emp.getNumTrabajador()));
       
+    }
+    public void recuperaDatos(){
+         curro = otrasClases.Ficheros.recuperaDatosFichero("Jobs.dat", curro);
+         trabajador = otrasClases.Ficheros.recuperaDatosFichero("Empleados.dat", trabajador);
     }
     public void populateArrayList(){
         try{
@@ -171,7 +176,7 @@ public class EditaEmpleado extends javax.swing.JFrame {
         apeEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
         jButton1.setText("Eliminar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +185,7 @@ public class EditaEmpleado extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/save.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/save.png"))); // NOI18N
         jButton2.setText("Save");
         jButton2.setActionCommand("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -274,14 +279,17 @@ public class EditaEmpleado extends javax.swing.JFrame {
         
 // Actualizar el tipo de trabajo de cada empleado... no rula... 
         jobs j = trabajador.get(selectedIndex).getJob();
+        // System.out.println("Trabajo empleado a editar "+ j.getNameOfJob());
         int index = 0;
         
         for(int i=0 ; i < curro.size() ; i++){
-            if(curro.get(i).equals(j)){
+            
+            if(curro.get(i).equalsJobs(j)){
                 index = i;
                 break;
             }
         }
+      //  System.out.println("Indice de jobs del trabajo del empleado queu se está edittando "+index);
         listaTrabajos.setSelectedIndex(index);        
     }//GEN-LAST:event_listaEmpleadosActionPerformed
 
