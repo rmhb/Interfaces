@@ -4,8 +4,11 @@
  */
 package login;
 
+import db.Conexion;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import java.sql.*;
+import java.util.Map;
 
 /**
  *
@@ -46,6 +49,7 @@ public class paginaPpal extends javax.swing.JFrame {
         botonLoginEntrar = new javax.swing.JButton();
         headerPPanel = new javax.swing.JPanel();
         cierraLogin = new javax.swing.JLabel();
+        botonLoginEntrar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -106,7 +110,7 @@ public class paginaPpal extends javax.swing.JFrame {
                 botonLoginEntrarActionPerformed(evt);
             }
         });
-        Capa_Background.add(botonLoginEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 670, 170, 60));
+        Capa_Background.add(botonLoginEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 670, 250, 60));
 
         headerPPanel.setBackground(new java.awt.Color(255, 255, 255));
         headerPPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -156,6 +160,18 @@ public class paginaPpal extends javax.swing.JFrame {
 
         Capa_Background.add(headerPPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 70));
 
+        botonLoginEntrar1.setBackground(new java.awt.Color(140, 200, 0));
+        botonLoginEntrar1.setFont(new java.awt.Font("SimSun", 0, 36)); // NOI18N
+        botonLoginEntrar1.setForeground(new java.awt.Color(255, 255, 255));
+        botonLoginEntrar1.setText("REGISTRO");
+        botonLoginEntrar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonLoginEntrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonLoginEntrar1ActionPerformed(evt);
+            }
+        });
+        Capa_Background.add(botonLoginEntrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 670, 260, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,10 +211,36 @@ public class paginaPpal extends javax.swing.JFrame {
     }//GEN-LAST:event_cierraLoginMouseExited
 
     private void botonLoginEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrarActionPerformed
+        
+        Conexion miConexion = new Conexion("localhost","3306","javanet","javanet","1234qwerty");
+        Connection conDB = miConexion.makeConnect();
+        try (PreparedStatement stmt = conDB.prepareStatement("SELECT * FROM usuario")) {
+        // Ejecutamos Query
+        ResultSet rs = stmt.executeQuery();
+        // Recorremos el resultado
+        while (rs.next())
+//          System.out.println (rs.getString("Nombre"));
+          
+          System.out.println (rs.getString(2));
+          System.out.println (rs.getString(3));
+          System.out.println (rs.getString(4));
+        } catch (SQLException sqle) { 
+          System.out.println("Error en la ejecución:" 
+        + sqle.getErrorCode() + " " + sqle.getMessage());    
+        }
+        miConexion.closeConnect(conDB);
+        
+        
+        
         JOptionPane.showMessageDialog(this, "Intentto de Login con los datos:\n Usuario: "+ loginUser.getText()+ " Password: "+ String.valueOf(loginPW.getPassword() ));
         new menuPpal.menu().setVisible(true);
         dispose();
     }//GEN-LAST:event_botonLoginEntrarActionPerformed
+
+    private void botonLoginEntrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrar1ActionPerformed
+        // TODO add your handling code here:
+       new Registro(null,true).show() ;
+    }//GEN-LAST:event_botonLoginEntrar1ActionPerformed
 //
 //    /**
 //     * @param args the command line arguments
@@ -238,6 +280,7 @@ public class paginaPpal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Capa_Background;
     private javax.swing.JButton botonLoginEntrar;
+    private javax.swing.JButton botonLoginEntrar1;
     private javax.swing.JLabel cierraLogin;
     private javax.swing.JPanel headerPPanel;
     private javax.swing.JLabel imgFondoWelcome;
