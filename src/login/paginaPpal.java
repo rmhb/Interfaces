@@ -219,11 +219,11 @@ public class paginaPpal extends javax.swing.JFrame {
         ResultSet rs = stmt.executeQuery();
         // Recorremos el resultado
         while (rs.next())
-//          System.out.println (rs.getString("Nombre"));
+            System.out.println (rs.getString("Nombre"));
           
-          System.out.println (rs.getString(2));
-          System.out.println (rs.getString(3));
-          System.out.println (rs.getString(4));
+//          System.out.println (rs.getString(2));
+//          System.out.println (rs.getString(3));
+//          System.out.println (rs.getString(4));
         } catch (SQLException sqle) { 
           System.out.println("Error en la ejecución:" 
         + sqle.getErrorCode() + " " + sqle.getMessage());    

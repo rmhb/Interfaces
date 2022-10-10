@@ -4,6 +4,13 @@
  */
 package login;
 
+import db.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author NASA
@@ -31,15 +38,15 @@ public class Registro extends javax.swing.JDialog {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        gridpanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        nombre = new javax.swing.JTextField();
+        ape = new javax.swing.JTextField();
+        usu = new javax.swing.JTextField();
+        pw = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         botonLoginEntrar3 = new javax.swing.JButton();
         botonLoginEntrar2 = new javax.swing.JButton();
@@ -61,12 +68,12 @@ public class Registro extends javax.swing.JDialog {
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 230, 180));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setForeground(new java.awt.Color(0, 102, 0));
+        gridpanel.setBackground(new java.awt.Color(255, 255, 255));
+        gridpanel.setForeground(new java.awt.Color(0, 102, 0));
         java.awt.GridBagLayout jPanel2Layout = new java.awt.GridBagLayout();
         jPanel2Layout.columnWidths = new int[] {0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0, 40, 0};
         jPanel2Layout.rowHeights = new int[] {0, 30, 0, 30, 0, 30, 0};
-        jPanel2.setLayout(jPanel2Layout);
+        gridpanel.setLayout(jPanel2Layout);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 102, 51));
@@ -74,7 +81,7 @@ public class Registro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        jPanel2.add(jLabel2, gridBagConstraints);
+        gridpanel.add(jLabel2, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 51));
@@ -82,7 +89,7 @@ public class Registro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        jPanel2.add(jLabel3, gridBagConstraints);
+        gridpanel.add(jLabel3, gridBagConstraints);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -92,7 +99,7 @@ public class Registro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        jPanel2.add(jLabel4, gridBagConstraints);
+        gridpanel.add(jLabel4, gridBagConstraints);
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -102,34 +109,34 @@ public class Registro extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        jPanel2.add(jLabel5, gridBagConstraints);
+        gridpanel.add(jLabel5, gridBagConstraints);
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
+        nombre.setBackground(new java.awt.Color(255, 255, 255));
+        nombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel2.add(jTextField1, gridBagConstraints);
+        gridpanel.add(nombre, gridBagConstraints);
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 51)));
+        ape.setBackground(new java.awt.Color(255, 255, 255));
+        ape.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ape.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        ape.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 51)));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel2.add(jTextField2, gridBagConstraints);
+        gridpanel.add(ape, gridBagConstraints);
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        usu.setBackground(new java.awt.Color(255, 255, 255));
+        usu.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        usu.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
+        usu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                usuActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -137,20 +144,20 @@ public class Registro extends javax.swing.JDialog {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel2.add(jTextField3, gridBagConstraints);
+        gridpanel.add(usu, gridBagConstraints);
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
+        pw.setBackground(new java.awt.Color(255, 255, 255));
+        pw.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        pw.setText("jPasswordField1");
+        pw.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 102, 0)));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 19;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel2.add(jPasswordField1, gridBagConstraints);
+        gridpanel.add(pw, gridBagConstraints);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 900, 330));
+        jPanel1.add(gridpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 900, 330));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.GridLayout(1, 2, 50, 0));
@@ -205,9 +212,9 @@ public class Registro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void usuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_usuActionPerformed
 
     private void botonLoginEntrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrar2ActionPerformed
         // TODO add your handling code here:
@@ -215,7 +222,39 @@ public class Registro extends javax.swing.JDialog {
     }//GEN-LAST:event_botonLoginEntrar2ActionPerformed
 
     private void botonLoginEntrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrar3ActionPerformed
-        // TODO add your handling code here:
+        if(nombre.getText().isEmpty() || ape.getText().isEmpty() || usu.getText().isEmpty()  ){
+          
+            JOptionPane.showMessageDialog(null, "Rellena los campos");
+        }
+        else{
+            String pass = String.valueOf(pw.getPassword());
+            if(pass.isBlank()){
+                JOptionPane.showMessageDialog(null, "kk PW");
+            }
+            String name = nombre.getText().trim();
+            String surname = ape.getText().trim();
+            String usuario = usu.getText().trim();
+
+            Conexion miConexion = new Conexion("localhost","3306","javanet","javanet","1234qwerty");
+            Connection conDB = miConexion.makeConnect();
+            try (PreparedStatement stmt = conDB.prepareStatement("INSERT INTO usuario(Nombre,Surname,pw, username ) VALUES (?,?,?,?)")) {
+            // Ejecutamos Query
+               stmt.setString(1, name);
+               stmt.setString(2, surname);
+               stmt.setString(3, pass);
+               stmt.setString(4,usuario);
+               int row = stmt.executeUpdate();
+
+            } catch (SQLException sqle) { 
+              System.out.println("Error en la ejecución:" 
+            + sqle.getErrorCode() + " " + sqle.getMessage());    
+            }
+            miConexion.closeConnect(conDB);
+
+
+            this.dispose();
+        }
+
     }//GEN-LAST:event_botonLoginEntrar3ActionPerformed
 
     /**
@@ -261,9 +300,11 @@ public class Registro extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ape;
     private javax.swing.JButton botonLoginEntrar2;
     private javax.swing.JButton botonLoginEntrar3;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JPanel gridpanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -271,11 +312,9 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField nombre;
+    private javax.swing.JPasswordField pw;
+    private javax.swing.JTextField usu;
     // End of variables declaration//GEN-END:variables
 }
