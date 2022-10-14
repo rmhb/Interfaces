@@ -214,12 +214,49 @@ public class paginaPpal extends javax.swing.JFrame {
         
         Conexion miConexion = new Conexion("localhost","3306","javanet","javanet","1234qwerty");
         Connection conDB = miConexion.makeConnect();
+        
+        // Ejemplo 1 sin consultas preparadas:
+        
+        String consulta= "SELECT * FROM usuario";
+        try(Statement st=conDB.createStatement()){
+            
+            ResultSet rs=st.executeQuery(consulta);
+            System.out.println("Imprimiendo ejemplo 1");
+            while(rs.next())
+            {
+                System.out.println( rs.getString(2)); //or rs.getString("column name");
+            }
+        } catch (SQLException sqle) { 
+          System.out.println("Error en la ejecución:" + sqle.getErrorCode() + " " + sqle.getMessage());    
+        }
+        // Ejemplo 2
+        System.out.println("Imprimiendo ejemplo 2");
+        try(PreparedStatement stmt = conDB.prepareStatement("SELECT * FROM usuario")){
+            ResultSet resultSet = stmt.executeQuery();
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            int columnsNumber = rsmd.getColumnCount();
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnsNumber; i++) {
+                    if (i > 1) System.out.print(",  ");
+                    String columnValue = resultSet.getString(i);
+                    System.out.print(columnValue + " " + rsmd.getColumnName(i));
+                }
+                System.out.println("");
+            }
+        } catch (SQLException sqle) { 
+          System.out.println("Error en la ejecución:" 
+        + sqle.getErrorCode() + " " + sqle.getMessage());    
+        }
+        // Ejemplo 3 con consultas preparadas
+        System.out.println("Imprimiendo ejemplo 3");
         try (PreparedStatement stmt = conDB.prepareStatement("SELECT * FROM usuario")) {
-        // Ejecutamos Query
-        ResultSet rs = stmt.executeQuery();
-        // Recorremos el resultado
-        while (rs.next())
-            System.out.println (rs.getString("Nombre"));
+            // Ejecutamos Query
+            ResultSet rs = stmt.executeQuery();
+                   // Recorremos el resultado
+            System.out.println("Nombre  Apellidos   Contraseña  user ");
+            while (rs.next())
+
+                System.out.println (rs.getString("Nombre")+"    "+rs.getString("Surname")+"    "+rs.getString("pw")+"    "+rs.getString("username") );
           
 //          System.out.println (rs.getString(2));
 //          System.out.println (rs.getString(3));
@@ -228,13 +265,32 @@ public class paginaPpal extends javax.swing.JFrame {
           System.out.println("Error en la ejecución:" 
         + sqle.getErrorCode() + " " + sqle.getMessage());    
         }
-        miConexion.closeConnect(conDB);
+        
+       // Ejemplo 4 con consultas preparadas
+        System.out.println("Imprimiendo ejemplo 4... el que ya controla usuario y contraseña");
+        String sql = "SELECT * FROM usuario WHERE username = ? and pw = ?";
+        try (PreparedStatement stmt = conDB.prepareStatement(sql)) {
+            stmt.setString(1, loginUser.getText());
+            stmt.setString(2,  String.valueOf(loginPW.getPassword()));
+            ResultSet rs = stmt.executeQuery();
+            // Recorremos el resultado
+            
+            if(rs.next()){
+                 miConexion.closeConnect(conDB);
+                 JOptionPane.showMessageDialog(this, "Login con exito:\n Usuario: "+ loginUser.getText()+ " Password: "+ String.valueOf(loginPW.getPassword() ));
+                new menuPpal.menu().setVisible(true);
+                dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña no válidos");
+            }
+          
+        } catch (SQLException sqle) { 
+          System.out.println("Error en la ejecución:" 
+        + sqle.getErrorCode() + " " + sqle.getMessage());    
+        }
         
         
-        
-        JOptionPane.showMessageDialog(this, "Intentto de Login con los datos:\n Usuario: "+ loginUser.getText()+ " Password: "+ String.valueOf(loginPW.getPassword() ));
-        new menuPpal.menu().setVisible(true);
-        dispose();
     }//GEN-LAST:event_botonLoginEntrarActionPerformed
 
     private void botonLoginEntrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginEntrar1ActionPerformed
