@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*
         ;
+import javax.swing.JOptionPane;
 import org.mariadb.jdbc.client.result.ResultSetMetaData;
 
 /**
@@ -43,19 +44,26 @@ public class EditUser extends javax.swing.JFrame {
                     String value = rs.getString(key);
                     map.put(key, value);
                 }
-                usu.addItem(rs.getString(2));
+                // Esto sería una forma de añadir los usuarios conforme creamos el array list, pero si después hacemos lo del setModel no hace falta
+//                usu.addItem(rs.getString(3));
                 list.add(map);
             }
+            String[] usuariosDB = new String[list.size()];
+            for(int i = 0; i<list.size(); i++){
+                usuariosDB[i] = list.get(i).get("username");
+            }
+            
+            usu.setModel(new javax.swing.DefaultComboBoxModel<>(usuariosDB));
+            
             //user.setSelectedIndex(0);
             // Ejemplos acceso a hashMap list
-//            System.out.println(list);
-//            System.out.println(list.get(0));
-//            System.out.println(list.get(0).get("Nombre"));
+//            System.out.println(list); // Es un array de objetos, con indices numéricos
+//            System.out.println(list.get(0)); // Es el primer objeto con clave, valor)
+//            System.out.println(list.get(0).get("Nombre")); // Es la clave nombre del primer objeto del array
 
             
         } catch (SQLException sqle) { 
-          System.out.println("Error en la ejecución:" 
-        + sqle.getErrorCode() + " " + sqle.getMessage());    
+          System.out.println("Error en la ejecución:" + sqle.getErrorCode() + " " + sqle.getMessage());    
         }
     }
     /**
@@ -66,13 +74,12 @@ public class EditUser extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         usu = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pwChange = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -103,9 +110,7 @@ public class EditUser extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel2.setText("Contraseña");
         jPanel1.add(jLabel2);
-
-        jPasswordField1.setText("jPasswordField1");
-        jPanel1.add(jPasswordField1);
+        jPanel1.add(pwChange);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -134,6 +139,11 @@ public class EditUser extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Actualizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -181,10 +191,48 @@ public class EditUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void usuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuActionPerformed
-         int selectedIndex = usu.getSelectedIndex();
-        jTextField3.setText(list.get(selectedIndex-1).get("Nombre"));
+        int selectedIndex = usu.getSelectedIndex();
+        jTextField3.setText(list.get(selectedIndex).get("Nombre"));
+        jTextField2.setText(list.get(selectedIndex).get("Surname"));
     
     }//GEN-LAST:event_usuActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Botón para actualizar.
+          if(jTextField3.getText().isEmpty() || jTextField2.getText().isEmpty() ){
+          
+            JOptionPane.showMessageDialog(null, "Rellena los campos");
+        }
+        else{
+            String pass = String.valueOf(pwChange.getPassword());
+            if(pass.isBlank()){
+                JOptionPane.showMessageDialog(null, "kk PW");
+            }
+            String name = jTextField3.getText().trim();
+            String surname = jTextField2.getText().trim();
+            int selectedIndex = usu.getSelectedIndex();
+            String userSys = list.get(selectedIndex).get("username");
+            System.out.println(userSys + " usuario Sys");
+            Conexion miConexion = new Conexion("localhost","3306","javanet","javanet","1234qwerty");
+            Connection conDB = miConexion.makeConnect();
+            try (PreparedStatement stmt = conDB.prepareStatement("UPDATE usuario set Nombre = ? , Surname = ? , pw = ?  WHERE username = ? ")) {
+            // Ejecutamos Query
+               stmt.setString(1, name);
+               stmt.setString(2, surname);
+               stmt.setString(3, pass);
+               stmt.setString(4,userSys);
+               int row = stmt.executeUpdate();
+               
+               miConexion.closeConnect(conDB);
+               this.dispose();
+
+            }
+
+            catch (SQLException sqle) { System.out.println("Error en la ejecución:" + sqle.getErrorCode() + " " + sqle.getMessage());    
+            }
+            
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,9 +278,9 @@ public class EditUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField pwChange;
     private javax.swing.JComboBox<String> usu;
     // End of variables declaration//GEN-END:variables
 }
