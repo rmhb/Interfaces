@@ -38,7 +38,7 @@ public class EditUser extends javax.swing.JFrame {
             list = new ArrayList<Map<String, String>>();
             ResultSetMetaData meta = (ResultSetMetaData) rs.getMetaData();
             while (rs.next()) {
-                Map map = new HashMap();
+                Map map = new HashMap(); // Por si no lo saben HashMap implementa la interfaz Map. Nos sirve para almacenar tanto los elementos key como los valores. También existe TreeMap pero es más lenta... por si quieren investigarla
                 for (int i = 1; i <= meta.getColumnCount(); i++) {
                     String key = meta.getColumnName(i);
                     String value = rs.getString(key);

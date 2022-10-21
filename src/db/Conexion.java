@@ -29,7 +29,7 @@ public class Conexion {
         this.pass = pass;
     }
 
-//Connnection conex = new Conexion("localhost","3306","javanet","javanet","1234qwerty").makeconnect();
+// Para usarlo con MariaDB en una base de datos local llamada javanet  -> Connnection conex = new Conexion("localhost","3306","javanet","javanet","1234qwerty").makeconnect();
     
     public Connection makeConnect(){
         try{
@@ -37,7 +37,7 @@ public class Conexion {
             Connection conex = DriverManager.getConnection(url, this.user, this.pass);
             return conex;
         }catch(SQLException ex){
-            System.out.println("SQLException "+ex.getMessage());
+            System.out.println("Error al establecer la conexion "+ex.getMessage());
             return null;
         }
         
@@ -47,8 +47,7 @@ public class Conexion {
             // Cerramos posibles conexiones abiertas
             if (con!=null) con.close();    
           } catch (Exception e) {
-            System.out.println("Error cerrando conexiones: "
-              + e.toString());
+            System.out.println("Error cerrando conexiones: " + e.toString());
           } 
     }
     

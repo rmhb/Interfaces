@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -231,14 +233,34 @@ public class Registro extends javax.swing.JDialog {
             if(pass.isBlank()){
                 JOptionPane.showMessageDialog(null, "kk PW");
             }
+            // Recuperar datos de los campos
             String name = nombre.getText().trim();
             String surname = ape.getText().trim();
             String usuario = usu.getText().trim();
+            
 
+
+
+        
+            String regexNombre = "^[a-zA-Z\\s]+"; 
+            String regex_mobilePhone= "^\\+?(6\\d{2}|7[1-9]\\d{1})\\d{6}$";
+            Pattern pattern = Pattern.compile(regexNombre, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(name);
+            if(matcher.matches()){
+                System.out.println("Nombre usuario válido ");
+            }        
+        
+
+
+            
+            
+            
+            // Establecer conexion con la DB
             Conexion miConexion = new Conexion("localhost","3306","javanet","javanet","1234qwerty");
             Connection conDB = miConexion.makeConnect();
+            // Realizar inserción de datos con consultas preparadas
             try (PreparedStatement stmt = conDB.prepareStatement("INSERT INTO usuario(Nombre,Surname,pw, username ) VALUES (?,?,?,?)")) {
-            // Ejecutamos Query
+            
                stmt.setString(1, name);
                stmt.setString(2, surname);
                stmt.setString(3, pass);
@@ -246,12 +268,9 @@ public class Registro extends javax.swing.JDialog {
                int row = stmt.executeUpdate();
 
             } catch (SQLException sqle) { 
-              System.out.println("Error en la ejecución:" 
-            + sqle.getErrorCode() + " " + sqle.getMessage());    
+              System.out.println("Error en la ejecución: "  + sqle.getErrorCode() + ": " + sqle.getMessage());    
             }
             miConexion.closeConnect(conDB);
-
-
             this.dispose();
         }
 
