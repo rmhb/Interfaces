@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+
+}
+.Botones{
+    
+    -fx-font-family: Broadway ;
+    -fx-background-color: #1c5107;
+    -fx-font-size: 2em;
+              
+}
+
