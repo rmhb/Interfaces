@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -21,12 +20,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="415.0" prefWidth="424.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.rental.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="534.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.rental.LoginController">
     <stylesheets>
-        <URL value="@/styles/login.css" />
+        <!-- OJO que no coje la ruta bien, después de la @ hay que poner dos puntos para subir al directorio anterior... en Sceene Builder se hacee bien pero aquí no -->
+        <URL value="@../styles/login.css" />
     </stylesheets>
    <children>
-      <TabPane layoutX="4.0" opacity="0.8" prefHeight="542.0" prefWidth="420.0">
+      <TabPane layoutX="4.0" opacity="0.8" prefHeight="471.0" prefWidth="431.0" AnchorPane.bottomAnchor="-56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab closable="false" style="-fx-font-size: 1em;" styleClass=".tab" text="Login">
             <content>
@@ -53,9 +53,6 @@
                                  <font>
                                     <Font size="24.0" />
                                  </font>
-                                 <graphic>
-                                    <Icon content="PERSON" prefHeight="50.0" prefWidth="42.0" />
-                                 </graphic>
                               </Label>
                               <TextField fx:id="_usu" alignment="CENTER" prefHeight="42.0" prefWidth="420.0">
                                  <font>
@@ -66,9 +63,6 @@
                                  <font>
                                     <Font size="24.0" />
                                  </font>
-                                 <graphic>
-                                    <Icon content="VPN_KEY" prefHeight="39.0" prefWidth="39.0" />
-                                 </graphic>
                                  <opaqueInsets>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </opaqueInsets>
@@ -79,7 +73,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <GridPane alignment="CENTER" vgap="10.0" VBox.vgrow="ALWAYS">
+                              <GridPane alignment="CENTER" cache="true" cacheHint="SCALE" hgap="20.0" vgap="10.0" VBox.vgrow="ALWAYS">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -88,7 +82,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#checkUser" prefHeight="72.0" prefWidth="188.0" stylesheets="@../styles/login.css" text="Login" textAlignment="CENTER" textFill="#1c5107" wrapText="true" GridPane.columnSpan="2">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#checkUser" prefHeight="72.0" prefWidth="188.0" stylesheets="@../styles/login.css" text="Login" textAlignment="CENTER" textFill="#e9ebe8" wrapText="true" GridPane.columnSpan="2">
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
@@ -116,6 +110,9 @@
                                        <font>
                                           <Font size="24.0" />
                                        </font>
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
                                     </Button>
                                  </children>
                                  <cursor>
@@ -124,6 +121,9 @@
                                  <effect>
                                     <Blend />
                                  </effect>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                 </VBox.margin>
                               </GridPane>
                            </children>
                            <opaqueInsets>
