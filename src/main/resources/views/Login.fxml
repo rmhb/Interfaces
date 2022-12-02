@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -18,6 +19,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="534.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.rental.LoginController">
@@ -49,10 +53,41 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <Label prefHeight="50.0" prefWidth="420.0" text="Usuario">
+                              <Label prefHeight="50.0" prefWidth="530.0" text="Usuario">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
+                                 <graphic>
+                                    <FontAwesomeIconView glyphName="WRENCH" selectionFill="#000000de">
+                                       <font>
+                                          <Font size="40.0" />
+                                       </font>
+                                       <fill>
+                                          <LinearGradient endX="1.0" endY="1.0">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.9473684430122375" green="0.6491228342056274" blue="0.9125730991363525" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.9966442953020134">
+                                                   <color>
+                                                      <Color red="0.7894737124443054" green="0.12426900863647461" blue="0.6231725215911865" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.7894737124443054" green="0.12426900863647461" blue="0.6231725215911865" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </FontAwesomeIconView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                 </padding>
                               </Label>
                               <TextField fx:id="_usu" alignment="CENTER" prefHeight="42.0" prefWidth="420.0">
                                  <font>

@@ -11,23 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-//import java.sql.*;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 
 /**
  * FXML Controller class
- *
- * @author NASA
  */
 public class LoginController implements Initializable {
 
@@ -49,10 +42,17 @@ public class LoginController implements Initializable {
         System.out.println("Entrando en checkUser");
         System.out.println("Email introducido "+_usu.getText());
         
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//        try {
+            /**
+             * Class.forName("com.mysql.cj.jdbc.Driver") lo que hace es cargar la clase para poder 
+             * tener disponible el Driver JDBC. Cuando llamamos a getConnection con la URL busca dentro de los
+             * drivers de base de datos que ya tiene registrados y selecciona el que necesita para acceder
+             * a la base de datos (en este caso mysql). 
+             * Aunque esto realmente no hacee falta  día de hoy porque lo conectores JDBC 4 ya registran las clases. (Esto es por si alguno lo pone)
+             * */
+            //Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn;
-            // Probar con bbagg6@tmall.com   vlVO3U
+            // Login con bbagg6@tmall.com   vlVO3U
             try {
                 conn = DriverManager.getConnection("jdbc:mysql://super.choto.es:3306/alu_rental", "unalumno", "soyunalumno2022");
                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM personas where email = ?");
@@ -70,10 +70,11 @@ public class LoginController implements Initializable {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        
+//        } 
+//        catch (ClassNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//        
        
     }
 }

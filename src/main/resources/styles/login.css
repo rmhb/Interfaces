@@ -8,9 +8,15 @@
 }
 .Botones{
     
-    -fx-font-family: Broadway ;
-    -fx-background-color: #1c5107;
+
+    -fx-text-fill: #006464;
+    -fx-background-color: #DFB951;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-padding: 5;
+    -fx-font-family: Broadway;
     -fx-font-size: 2em;
-              
 }
+              
+
 
