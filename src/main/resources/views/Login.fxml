@@ -7,13 +7,18 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,7 +41,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="448.0" prefWidth="420.0">
                      <children>
-                        <VBox layoutX="210.0" layoutY="74.0" prefHeight="511.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="210.0" layoutY="74.0" prefHeight="573.0" prefWidth="534.0" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="63.0" prefWidth="420.0" text="Login" VBox.vgrow="ALWAYS">
                                  <font>
@@ -88,6 +93,9 @@
                                  <padding>
                                     <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
                                  </padding>
+                                 <tooltip>
+                                    <Tooltip text="Introduce tu usuario" />
+                                 </tooltip>
                               </Label>
                               <TextField fx:id="_usu" alignment="CENTER" prefHeight="42.0" prefWidth="420.0">
                                  <font>
@@ -101,9 +109,12 @@
                                  <opaqueInsets>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </opaqueInsets>
+                                 <tooltip>
+                                    <Tooltip text="Introduce tu contraseña" />
+                                 </tooltip>
                               </Label>
                               <PasswordField fx:id="_pw" prefHeight="40.0" prefWidth="420.0" />
-                              <Label fx:id="_error" prefHeight="74.0" prefWidth="420.0" styleClass="mainFxmlClass" textFill="#eb0c0c">
+                              <Label fx:id="_error" alignment="CENTER" contentDisplay="CENTER" prefHeight="74.0" prefWidth="533.0" styleClass="mainFxmlClass" textFill="#eb0c0c">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -117,7 +128,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#checkUser" prefHeight="72.0" prefWidth="188.0" stylesheets="@../styles/login.css" text="Login" textAlignment="CENTER" textFill="#e9ebe8" wrapText="true" GridPane.columnSpan="2">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onAction="#checkUser" prefHeight="72.0" prefWidth="188.0" stylesheets="@../styles/login.css" text="_Login" textAlignment="CENTER" textFill="#e9ebe8" wrapText="true" GridPane.columnSpan="2">
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
@@ -135,7 +146,7 @@
                                           <String fx:value="Botones" />
                                        </styleClass>
                                     </Button>
-                                    <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="184.0" text="Cancelar" GridPane.columnIndex="1">
+                                    <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="72.0" prefWidth="184.0" text="Ca_ncelar" GridPane.columnIndex="1">
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
@@ -168,9 +179,39 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab style="-fx-font-size: 1em;" text="Register">
+          <Tab closable="false" onSelectionChanged="#loadRegister" style="-fx-font-size: 1em;" text="Register">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <MenuBar prefHeight="66.0" prefWidth="534.0">
+                          <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Close">
+                                       <accelerator>
+                                          <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                       </accelerator>
+                                    </MenuItem>
+                                    <MenuItem mnemonicParsing="false" onMenuValidation="#saveFile" text="Close">
+                                       <accelerator>
+                                          <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                       </accelerator>
+                                    </MenuItem>
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Edit">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                              </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Help">
+                              <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                              </items>
+                            </Menu>
+                          </menus>
+                        </MenuBar>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>

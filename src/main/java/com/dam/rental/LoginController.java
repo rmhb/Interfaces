@@ -18,6 +18,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javafx.application.Platform;
 
 /**
  * FXML Controller class
@@ -58,14 +59,19 @@ public class LoginController implements Initializable {
                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM personas where email = ?");
                 stmt.setString(1, _usu.getText());
                 ResultSet rs = stmt.executeQuery();
-                rs.next();
-                System.out.println("Nombre y apellidos " + rs.getString(2)+" "+ rs.getString(3));
-                System.out.println("Email " + rs.getString(4));
-                try {
-                    App.setRoot("/views/rentCar");
-                } catch (IOException ex) {
-                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                if(rs.next()){
+                    System.out.println("Nombre y apellidos " + rs.getString(2)+" "+ rs.getString(3));
+                    System.out.println("Email " + rs.getString(4));
+                    try {
+                        App.setRoot("/views/rentCar");
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    }    
+                }else{
+                    _error.setText("El usuario no existe");
                 }
+               
+                
                 
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,5 +82,26 @@ public class LoginController implements Initializable {
 //        }
 //        
        
+    }
+    @FXML 
+    public void cerrar(ActionEvent e){
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setTitle(null);
+        a.setContentText("Cerrar???");
+        Platform.exit();
+    }
+    @FXML
+    public void saveFile(ActionEvent E){
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle(null);
+        a.setContentText("Archivo guardado");
+    }
+    @FXML
+    public void loadRegister(){
+        try {
+            App.setRoot("/views/RegisterView");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
