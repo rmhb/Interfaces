@@ -7,6 +7,8 @@ module com.dam.rental {
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
 //    requires mysql.connector.java;
+    requires javafx.base;
+    requires javafx.graphics;
 
     opens com.dam.rental to javafx.fxml;
     exports com.dam.rental;

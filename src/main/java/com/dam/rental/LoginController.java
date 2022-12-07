@@ -31,12 +31,15 @@ public class LoginController implements Initializable {
     PasswordField _pw;
     @FXML
     Label _error;
+    @FXML private Label _userLabel;
+    private ResourceBundle lang;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+            lang = rb;
+            _userLabel.setText(lang.getString("key_userLabel"));
     }    
     @FXML
     public void checkUser(ActionEvent event){

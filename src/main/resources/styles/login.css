@@ -1,20 +1,22 @@
 /*
  * Empty Stylesheet file.
  */
-
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 .mainFxmlClass {
 
 
 }
 .Botones{
     
-
+    
+    /**-fx-font-family: Broadway ;*/
+    -fx-font-family: 'Nerko One', cursive;
     -fx-text-fill: #006464;
     -fx-background-color: #DFB951;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
     -fx-padding: 5;
-    -fx-font-family: Broadway;
+
     -fx-font-size: 2em;
 }
               

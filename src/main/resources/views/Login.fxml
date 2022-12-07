@@ -7,9 +7,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -18,7 +15,6 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -58,7 +54,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <Label prefHeight="50.0" prefWidth="530.0" text="Usuario">
+                              <Label fx:id="_userLabel" prefHeight="50.0" prefWidth="530.0" text="Usuario">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -102,7 +98,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </TextField>
-                              <Label alignment="BOTTOM_LEFT" prefHeight="86.0" prefWidth="420.0" text="Contraseña">
+                              <Label alignment="BOTTOM_LEFT" prefHeight="86.0" prefWidth="420.0" text="%key_pwLabel">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -181,37 +177,7 @@
           </Tab>
           <Tab closable="false" onSelectionChanged="#loadRegister" style="-fx-font-size: 1em;" text="Register">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <MenuBar prefHeight="66.0" prefWidth="534.0">
-                          <menus>
-                            <Menu mnemonicParsing="false" text="File">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="Close">
-                                       <accelerator>
-                                          <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                                       </accelerator>
-                                    </MenuItem>
-                                    <MenuItem mnemonicParsing="false" onMenuValidation="#saveFile" text="Close">
-                                       <accelerator>
-                                          <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                                       </accelerator>
-                                    </MenuItem>
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Edit">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="Delete" />
-                              </items>
-                            </Menu>
-                            <Menu mnemonicParsing="false" text="Help">
-                              <items>
-                                <MenuItem mnemonicParsing="false" text="About" />
-                              </items>
-                            </Menu>
-                          </menus>
-                        </MenuBar>
-                     </children></AnchorPane>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
         </tabs>
