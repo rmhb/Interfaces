@@ -9,6 +9,7 @@ module com.dam.rental {
 //    requires mysql.connector.java;
     requires javafx.base;
     requires javafx.graphics;
+    requires org.json;
 
     opens com.dam.rental to javafx.fxml;
     exports com.dam.rental;

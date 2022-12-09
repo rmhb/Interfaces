@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.json.*;
 
 /**
  * FXML Controller class
@@ -38,21 +39,46 @@ public class RegisterViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("Ande toy -->  "+ Locale.getDefault() );
-        Locale.setDefault(Locale.UK); System.out.println("Ande toy -->  "+ Locale.getDefault() );
-//        _col_id.setCellValueFactory(new PropertyValueFactory("bla"));
-////        this._col_id.setCellValueFactory(new PropertyValueFactory("Id"));
-//        this._col_nombre.setCellValueFactory(new PropertyValueFactory("Nombre"));
-//        this._col_ape.setCellValueFactory(new PropertyValueFactory("Apellidos"));
-//        this._col_marca.setCellValueFactory(new PropertyValueFactory("Marca"));
-//        this._col_modelo.setCellValueFactory(new PropertyValueFactory("Modelo"));
-//        this._col_f.setCellValueFactory(new PropertyValueFactory("Fecha"));
         
+        //https://ourcodeworld.co/articulos/leer/836/como-trabajar-con-json-facilmente-en-java
         
-        // Alquiler al = new Alquiler(_col_id,_col_marca, _col_modelo, _col_nombre, _col_ape, _col_f );
-        // ObservableList<Alquiler> items = al.getAlquileres();
-        ObservableList<Alquiler> items = Alquiler.getAlquileres();
-        this._tabla_rental.setItems(items);
+         JSONObject myObject = new JSONObject();
+
+        // Cadenas de texto básicas
+        myObject.put("name", "Carlos");
+        myObject.put("last_name", "Carlos");
+        
+        // Valores primitivos
+        myObject.put("age", new Integer(21));
+        myObject.put("bank_account_balance", new Double(20.2));
+        myObject.put("is_developer", new Boolean(true));
+        
+        // Matrices
+        double[] myList = {1.9, 2.9, 3.4, 3.5};
+        myObject.put("number_list", myList);
+        
+        // Objeto dentro de objeto
+        JSONObject subdata = new JSONObject();
+        myObject.put("extra_data", subdata);
+
+        // Generar cadena de texto JSON
+        System.out.print(myObject);
+        
+//        System.out.println("Ande toy -->  "+ Locale.getDefault() );
+//        Locale.setDefault(Locale.UK); System.out.println("Ande toy -->  "+ Locale.getDefault() );
+////        _col_id.setCellValueFactory(new PropertyValueFactory("bla"));
+//////        this._col_id.setCellValueFactory(new PropertyValueFactory("Id"));
+////        this._col_nombre.setCellValueFactory(new PropertyValueFactory("Nombre"));
+////        this._col_ape.setCellValueFactory(new PropertyValueFactory("Apellidos"));
+////        this._col_marca.setCellValueFactory(new PropertyValueFactory("Marca"));
+////        this._col_modelo.setCellValueFactory(new PropertyValueFactory("Modelo"));
+////        this._col_f.setCellValueFactory(new PropertyValueFactory("Fecha"));
+//        
+//        
+//        // Alquiler al = new Alquiler(_col_id,_col_marca, _col_modelo, _col_nombre, _col_ape, _col_f );
+//        // ObservableList<Alquiler> items = al.getAlquileres();
+//        ObservableList<Alquiler> items = Alquiler.getAlquileres();
+//        this._tabla_rental.setItems(items);
         
     }    
     @FXML
