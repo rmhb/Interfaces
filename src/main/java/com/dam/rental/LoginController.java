@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
 //        // Generar cadena de texto JSON
 //        System.out.print(myObject);
     }    
-    @FXML
+    @FXML    
     public void checkUser(ActionEvent event){
         System.out.println("Entrando en checkUser");
         System.out.println("Email introducido "+_usu.getText());
@@ -90,6 +90,7 @@ public class LoginController implements Initializable {
                     System.out.println("Nombre y apellidos " + rs.getString(2)+" "+ rs.getString(3));
                     System.out.println("Email " + rs.getString(4));
                     try {
+//                        App.setRoot("/views/loadGif");
                         App.setRoot("/views/rentCar");
                     } catch (IOException ex) {
                         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,35 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="574.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.rental.RentCarController">
    <children>
-      <MenuBar prefHeight="42.0" prefWidth="643.0">
-        <menus>
-          <Menu text="_File">
-            <items>
-                  <MenuItem mnemonicParsing="false" text="Save">
-                     <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-              <MenuItem mnemonicParsing="false" text="Close">
-                     <accelerator>
-                        <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                     </accelerator>
-                  </MenuItem>
-            </items>
-          </Menu>
-          <Menu text="E_dit">
-            <items>
-              <MenuItem text="_Editar" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <GridPane layoutX="7.0" layoutY="56.0" onMouseClicked="#checkWin" prefHeight="519.0" prefWidth="636.0">
+      <GridPane layoutX="7.0" layoutY="56.0" prefHeight="519.0" prefWidth="636.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,47 +21,47 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="_label1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="203.0" text="X" textAlignment="CENTER">
+            <Label fx:id="_label1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="173.0" prefWidth="212.0" style="-fx-border-color: black;" textAlignment="CENTER">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label4" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="203.0" text="X" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="_label4" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="180.0" prefWidth="226.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label2" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="204.0" text="O" textAlignment="CENTER" GridPane.columnIndex="1">
+            <Label fx:id="_label2" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="173.0" prefWidth="215.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="1">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label5" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="200.0" text="O" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="_label5" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="183.0" prefWidth="230.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label7" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="208.0" text="O" textAlignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="_label7" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="175.0" prefWidth="244.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label8" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="227.0" text="O" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="_label8" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="183.0" prefWidth="230.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label3" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="211.0" text="O" textAlignment="CENTER" GridPane.columnIndex="2">
+            <Label fx:id="_label3" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="175.0" prefWidth="230.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="2">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label6" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="202.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="_label6" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="184.0" prefWidth="233.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label fx:id="_label9" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#checkWin" prefHeight="62.0" prefWidth="237.0" text="O" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="_label9" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#userClick" prefHeight="184.0" prefWidth="220.0" style="-fx-border-color: black;" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="42.0" />
                </font>
