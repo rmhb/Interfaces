@@ -172,7 +172,11 @@ public class RentCarController implements Initializable {
                 return -profundidad; /// El winner es el usuario
         }
         else if(this.isBoardFull() || profundidad == 1)
-            return 0; // Caso de tablas  
+        {
+             //  System.out.println("TABLAS");
+             return 0; // Caso de tablas  
+        }
+           
         else
         {
              // iNVERSION DE FICHA.
@@ -236,8 +240,8 @@ public class RentCarController implements Initializable {
                     if (labels.get(i).getText().isBlank())
                      {
                        labels.get(i).setText("X"); // Poner ficha para evaluar                       
-                       scores[i]= evalua("X", 4-1);
-                      // System.out.println("puntuación de la casilla "+i+" es "+ scores[i] );
+                       scores[i]= evalua("X", 5-1);
+                       System.out.println("puntuación de la casilla "+i+" es "+ scores[i] );
                        labels.get(i).setText(""); // Quitar ficha
                          //System.out.println(" Comrpbacion "+ labels.get(i).getText().isBlank());
                      }
@@ -245,8 +249,13 @@ public class RentCarController implements Initializable {
                      
                 }
                 
-                int mejorCasilla=0;
+                int primeraCasillaLibre=0;
+                while (casillaEstaLibre[primeraCasillaLibre]==0)
+                 {
+                   primeraCasillaLibre++;    
+                 }
                 
+                int mejorCasilla=primeraCasillaLibre;         
                 for (int casilla = 0; casilla < scores.length; casilla++)
                  {
                    if (casillaEstaLibre[casilla]==1)
