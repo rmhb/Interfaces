@@ -135,5 +135,6 @@ public class InterfacesUD6Test {
         // TODO review the generated test code and remove the default call to fail.
 
     }
+    // Para ejecutar el test -> Boton derecho raton sobre este fichero en el panel izquierdo. --> pulsar test. si no aparece la ventana dee test pulsar Window-->IDE Tools->Test Results
     // https://netbeans.apache.org/kb/docs/java/junit-intro.html
 }
