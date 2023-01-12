@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class RentCarController implements Initializable {
     @FXML
-    Label _label1,_label2, _label3, _label4, _label5, _label6, _label7, _label8, _label9;
+    Label _label1,_label2, _label3, _label4, _label5, _label6, _label7, _label8, _label9, _sms;
       // Probar con bbagg6@tmall.com   vlVO3U
     List<Label> labels;
 
@@ -209,6 +209,12 @@ public class RentCarController implements Initializable {
     }
 
        
+    @FXML
+    private void resetBoard(){
+        for (int i = 0; i < 9; i++) {
+             labels.get(i).setText(" ");
+        }
+    }
     
     @FXML
     public void userClick(MouseEvent event) throws InterruptedException{
@@ -220,8 +226,8 @@ public class RentCarController implements Initializable {
         if (label.getText().isBlank()){
             label.setText("O");
             
-            if(weHaveWinner()) {System.out.println("USER WINS"); derrota=true;}
-            else if (isBoardFull()) {System.out.println("TABLAS"); tablas=true;}
+            if(weHaveWinner()) {_sms.setText("USER WINS!!"); derrota=true;}
+            else if (isBoardFull()) {_sms.setText("TABLAS!!"); tablas=true;}
             if (!(derrota || tablas))
             {
                 Arrays.fill(scores,0);
@@ -230,7 +236,7 @@ public class RentCarController implements Initializable {
                     if (labels.get(i).getText().isBlank())
                      {
                        labels.get(i).setText("X"); // Poner ficha para evaluar
-                       scores[i]= evalua("X", 6-1);
+                       scores[i]= evalua("X", 7-1);
                        // si llamo con profundidad= 2-1 => caso base tiene 2 fichas puestas de las 9 posibles
                        // si llamo con profundidad= 3-1 => caso base tiene 3 fichas puestas de las 9 posibles
                        // ...
@@ -259,8 +265,8 @@ public class RentCarController implements Initializable {
                 labels.get(mejor_movimiento).setText("X");
                 
                 
-                if(weHaveWinner()) {System.out.println("COMPUTER WINS"); victoria=true;}
-                else if (isBoardFull()) {System.out.println("TABLAS"); tablas=true;}
+                if(weHaveWinner()) {_sms.setText("COMPUTER WINS"); victoria=true;}
+                else if (isBoardFull()) {_sms.setText("TABLAS"); tablas=true;}
             }
             
         }
