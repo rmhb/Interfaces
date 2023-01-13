@@ -17,11 +17,15 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class InterfacesUD6Test {
     
+    private int a, b,c,d;
+    private double a1, b1, c1;
     public InterfacesUD6Test() {
     }
     
     @BeforeAll
     public static void setUpClass() {
+              
+        
     }
     
     @AfterAll
@@ -30,6 +34,11 @@ public class InterfacesUD6Test {
     
     @BeforeEach
     public void setUp() {
+        a = 35;
+        b= 15;
+        d=-61;
+        a1 = 12.56;
+        b1 = -14.11;
     }
     
     @AfterEach
@@ -41,15 +50,16 @@ public class InterfacesUD6Test {
      */
     @Test
     public void testSuma() {
-        System.out.println("suma");
-        int a = 35;
-        int b = 15;
+        System.out.println("Probando suma");
         InterfacesUD6 instance = new InterfacesUD6();
-        int expResult = 40;
-        int result = instance.suma(a, b);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-
+        int resultadoEsperado = 50;
+        int resultadoObtenido = instance.suma(a, b);
+        c= resultadoObtenido;
+        resultadoObtenido = instance.suma(c, d);
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        System.out.println("Test suma positivos ok");
+        assertEquals(-11, resultadoObtenido);
+        System.out.println("Test suma negativo positivo ok");
     }
 
     /**
@@ -57,22 +67,18 @@ public class InterfacesUD6Test {
      */
     @Test
     public void testMayor() {
-        System.out.println("mayor");
-        double a = -12.5;
-        double b = 12.5;
+        System.out.println("Probando Mayor");
         InterfacesUD6 instance = new InterfacesUD6();
         boolean expResult = false;
-        boolean result = instance.mayor(a, b);
+        boolean result = instance.mayor(b1, a1);
         assertEquals(expResult, result);
         System.out.println("Primer Test Pasado");
-        a = 14;
-        b= 13.99;
+
         expResult = true;
-        result = instance.mayor(a, b);
+        result = instance.mayor(a1, b1);
         assertEquals(expResult, result);
         System.out.println("Segundo Test Pasado");
-        // TODO review the generated test code and remove the default call to fail.
-
+        
     }
 
 
@@ -82,11 +88,10 @@ public class InterfacesUD6Test {
     @Test
     public void testResta() {
         System.out.println("resta");
-        double a = 0.0;
-        double b = 0.0;
+
         InterfacesUD6 instance = new InterfacesUD6();
         double expResult = 0.0;
-        double result = instance.resta(a, b);
+        double result = instance.resta(a1, b1);
         assertEquals(expResult, result, 0);
         // TODO review the generated test code and remove the default call to fail.
 
@@ -120,6 +125,7 @@ public class InterfacesUD6Test {
         double expResult = 0.0;
         double result = instance.mult(a, b);
         assertEquals(expResult, result, 0);
+        
         // TODO review the generated test code and remove the default call to fail.
 
     }
