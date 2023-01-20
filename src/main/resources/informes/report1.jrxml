@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e993c84-ee42-4a72-b670-6d14530cfe03">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Avatar" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM personas;]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="surname" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="avatar" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="gender">
+		<groupExpression><![CDATA[$F{gender}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="9" width="100" height="20" uuid="94ffd980-6573-45b1-8ce9-6cb19a934f0c"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rental Puri]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="34" width="100" height="20" forecolor="#666666" uuid="4635b604-2427-480b-a1cc-622cf7d50029"/>
+				<text><![CDATA[C/ Las Palmas, 23]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="689" y="9" width="100" height="20" uuid="2c82d44e-4cb9-45f9-b80c-5f60c8961b5b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="12" y="5" width="82" height="70" forecolor="#33FF33" uuid="46b5a4d3-2cdc-40e6-b547-63ab35137ada"/>
+				<imageExpression><![CDATA["C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\img\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="55" forecolor="#FFFFFF" backcolor="#336B87" uuid="492241d1-3736-4176-81da-af0d0ca44bad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Berlin Sans FB Demi" size="30" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Listado de Clientes]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="68" y="0" width="115" height="30" uuid="5e37d9ef-522f-498b-afd5-fb6b554c58d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Identificador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="0" width="115" height="30" uuid="0a532aba-b66c-408f-b4c4-c73bdda47a95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="0" width="115" height="30" uuid="d9935a6c-7a79-427b-ba6e-0f0092805381"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="548" y="0" width="115" height="30" uuid="f905b991-f448-4ee8-ab0f-22256562eb17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="708" y="0" width="115" height="30" uuid="773549cc-dd10-4557-9cb3-a1a063d5d50f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="156" splitType="Stretch">
+			<image>
+				<reportElement x="6" y="8" width="88" height="78" uuid="7f16ec18-204d-4524-b14d-5b602acad228"/>
+			</image>
+			<textField>
+				<reportElement x="128" y="0" width="55" height="20" uuid="166b8b2c-5150-4f3f-b993-fd73c09f3cdb"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="0" width="55" height="20" uuid="d501eb92-f62d-4552-a52b-fd38e0269ebc"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="55" height="20" uuid="fcd1dcc9-a94a-4a21-8bca-beacaa563d1e"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="548" y="0" width="55" height="20" uuid="63c72357-53fb-432b-bf09-64b6cc7cb601"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="708" y="0" width="55" height="20" uuid="eeeff5a7-7958-4316-8dc3-c4bc6d85d8de"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="63" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="709" y="28" width="80" height="20" uuid="ff8207f1-f527-4455-a7a7-eb225e015305"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="801" y="28" width="40" height="20" uuid="4a780da4-773b-4987-a935-31e857b9ba06"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="1" width="637" height="53" uuid="aa9453da-9dc6-4fe8-8af5-29f931cf8405"/>
+				<text><![CDATA[Todos los derechos reservados]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
