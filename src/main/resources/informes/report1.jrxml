@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e993c84-ee42-4a72-b670-6d14530cfe03">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Listado Clientes" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e993c84-ee42-4a72-b670-6d14530cfe03">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<parameter name="Avatar" class="java.lang.String">
-		<parameterDescription><![CDATA[]]></parameterDescription>
-	</parameter>
-	<queryString language="SQL">
-		<![CDATA[SELECT * FROM personas;]]>
+	<property name="ireport.y" value="23"/>
+	<subDataset name="AvatarIMG" resourceBundle="avatar_img" uuid="95910ecf-0390-4945-94a1-a32b5f6afac7">
+		<parameter name="AvatarURL" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT avatar FROM personas;]]>
+		</queryString>
+		<field name="avatar" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT id, name as Nombre, surname as Apellidos, email as Correo, gender as Sexo FROM personas;
+]]>
 	</queryString>
 	<field name="id" class="java.lang.Long">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="name" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="surname" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="email" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="gender" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="avatar" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="Nombre" class="java.lang.String"/>
+	<field name="Apellidos" class="java.lang.String"/>
+	<field name="Correo" class="java.lang.String"/>
+	<field name="Sexo" class="java.lang.String"/>
 	<group name="gender">
-		<groupExpression><![CDATA[$F{gender}]]></groupExpression>
+		<groupExpression><![CDATA[$F{Sexo}]]></groupExpression>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
@@ -48,18 +44,25 @@
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="689" y="9" width="100" height="20" uuid="2c82d44e-4cb9-45f9-b80c-5f60c8961b5b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<image>
 				<reportElement isPrintRepeatedValues="false" x="12" y="5" width="82" height="70" forecolor="#33FF33" uuid="46b5a4d3-2cdc-40e6-b547-63ab35137ada"/>
 				<imageExpression><![CDATA["C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\img\\logo.png"]]></imageExpression>
 			</image>
+			<image scaleImage="FillFrame">
+				<reportElement mode="Opaque" x="304" y="5" width="200" height="66" uuid="1fdda9e0-6c9d-43fa-a5a8-50b2d0dff451"/>
+				<imageExpression><![CDATA["C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\img\\people.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="55" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="55" forecolor="#FFFFFF" backcolor="#336B87" uuid="492241d1-3736-4176-81da-af0d0ca44bad"/>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="55" forecolor="#FFFFFF" backcolor="#3399FF" uuid="492241d1-3736-4176-81da-af0d0ca44bad"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Berlin Sans FB Demi" size="30" isUnderline="true"/>
 				</textElement>
@@ -70,82 +73,91 @@
 	<columnHeader>
 		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="68" y="0" width="115" height="30" uuid="5e37d9ef-522f-498b-afd5-fb6b554c58d7"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="68" y="0" width="43" height="30" uuid="5e37d9ef-522f-498b-afd5-fb6b554c58d7"/>
+				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[Identificador]]></text>
+				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="228" y="0" width="115" height="30" uuid="0a532aba-b66c-408f-b4c4-c73bdda47a95"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="189" y="0" width="154" height="30" uuid="0a532aba-b66c-408f-b4c4-c73bdda47a95"/>
+				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="388" y="0" width="115" height="30" uuid="d9935a6c-7a79-427b-ba6e-0f0092805381"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<reportElement x="365" y="0" width="138" height="30" uuid="d9935a6c-7a79-427b-ba6e-0f0092805381"/>
+				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
 				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="548" y="0" width="115" height="30" uuid="f905b991-f448-4ee8-ab0f-22256562eb17"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
-				<text><![CDATA[email]]></text>
+				<text><![CDATA[Correo]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="708" y="0" width="115" height="30" uuid="773549cc-dd10-4557-9cb3-a1a063d5d50f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
 				<text><![CDATA[Sexo]]></text>
 			</staticText>
+			<line>
+				<reportElement x="2" y="33" width="800" height="2" forecolor="#009900" uuid="155a4027-62a5-4fa9-a59a-f909d27777da"/>
+				<graphicElement>
+					<pen lineWidth="4.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="156" splitType="Stretch">
 			<image>
-				<reportElement x="6" y="8" width="88" height="78" uuid="7f16ec18-204d-4524-b14d-5b602acad228"/>
+				<reportElement mode="Opaque" x="6" y="6" width="49" height="40" uuid="7f16ec18-204d-4524-b14d-5b602acad228"/>
 			</image>
 			<textField>
-				<reportElement x="128" y="0" width="55" height="20" uuid="166b8b2c-5150-4f3f-b993-fd73c09f3cdb"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
+				<reportElement x="68" y="1" width="79" height="45" uuid="166b8b2c-5150-4f3f-b993-fd73c09f3cdb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Bahnschrift" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="228" y="0" width="55" height="20" uuid="d501eb92-f62d-4552-a52b-fd38e0269ebc"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
+				<reportElement x="549" y="1" width="100" height="45" uuid="db715347-a35c-4ed4-99ea-7a91da4e00e2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bahnschrift" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Correo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="388" y="0" width="55" height="20" uuid="fcd1dcc9-a94a-4a21-8bca-beacaa563d1e"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
+				<reportElement x="365" y="6" width="115" height="43" uuid="1fee5ce2-fbd5-4ff8-a128-3982da5552b2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bahnschrift" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Apellidos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="548" y="0" width="55" height="20" uuid="63c72357-53fb-432b-bf09-64b6cc7cb601"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
+				<reportElement x="708" y="3" width="93" height="43" uuid="18a721ce-ede9-41e6-a5c5-0afdbd18b8ae"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bahnschrift" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Sexo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="708" y="0" width="55" height="20" uuid="eeeff5a7-7958-4316-8dc3-c4bc6d85d8de"/>
-				<textElement textAlignment="Justified">
-					<font size="12"/>
+				<reportElement x="189" y="2" width="115" height="45" uuid="a793de54-7980-43a7-9720-6220ad950b5c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bahnschrift" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="2" y="56" width="800" height="1" forecolor="#0099FF" uuid="0e4b1383-c2d3-426e-b466-022af739ea2e"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
@@ -153,19 +165,19 @@
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
-			<textField>
-				<reportElement x="709" y="28" width="80" height="20" uuid="ff8207f1-f527-4455-a7a7-eb225e015305"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="801" y="28" width="40" height="20" uuid="4a780da4-773b-4987-a935-31e857b9ba06"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="12" y="1" width="637" height="53" uuid="aa9453da-9dc6-4fe8-8af5-29f931cf8405"/>
 				<text><![CDATA[Todos los derechos reservados]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="649" y="1" width="92" height="39" uuid="5eeb5174-eaad-4c8d-b93a-bdca9098e062"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="741" y="0" width="52" height="39" uuid="266663b1-e67a-4809-a9c3-71419d94ad87"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>

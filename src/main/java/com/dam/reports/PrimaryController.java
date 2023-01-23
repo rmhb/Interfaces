@@ -10,12 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
-import net.sf.jasperreports.engine.JRExporter;
+//import net.sf.jasperreports.engine.JasperReport;
+//import net.sf.jasperreports.engine.util.JRLoader;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.view.JasperViewer;
+//import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.*;
+
 
 public class PrimaryController {
 
@@ -26,43 +28,46 @@ public class PrimaryController {
     @FXML
     private void _imprimir(){
        Connection conn;
+       // Parece que existe un plugin para directamente crear instaladores.... a saber si esta chulo
+       // Tutorial de jasperreport que viene de ejava https://community.jaspersoft.com/wiki/jasperreports-library-tutorial
+       //https://jasperreports.sourceforge.net/api/net/sf/jasperreports/engine/package-summary.html
             // Login con bbagg6@tmall.com   vlVO3U
-            try {
-                conn = DriverManager.getConnection("jdbc:mysql://super.choto.es:3306/alu_rental", "unalumno", "soyunalumno2022");
+//            try {
+//                conn = DriverManager.getConnection("jdbc:mysql://super.choto.es:3306/alu_rental", "unalumno", "soyunalumno2022");
                 JasperReport reporte = (JasperReport) JRLoader.loadObject(App.class.getResource("informes/report1.jasper"));
-                JasperReport reporte = (JasperReport) JRLoader.loadObject("informes/report1.jasper");
-                
-//                https://jossjack.wordpress.com/2014/06/15/jasperreport-ireport-en-netbeans/
-                Class.forName("com.mysql.jdbc.Driver");
-Connection conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.6:3306/PRUEBA", "jossjack", "123456");
-JasperReport reporte = (JasperReport) JRLoader.loadObject("jack.jasper");
-JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, conexion);
-JRExporter exporter = new JRPdfExporter();
-exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reporte_jackPDF.pdf"));
-exporter.exportReport();
-                
-                
-                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM personas where email = ?");
-                stmt.setString(1, _usu.getText());
-                ResultSet rs = stmt.executeQuery();
-                if(rs.next()){
-                    System.out.println("Nombre y apellidos " + rs.getString(2)+" "+ rs.getString(3));
-                    System.out.println("Email " + rs.getString(4));
-                    try {
-//                        App.setRoot("/views/loadGif");
-                        App.setRoot("/views/rentCar");
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }    
-                }else{
-                    System.out.println("Cagada");
-                }
-               
-                
-                
-            } catch (SQLException ex) {
-                 ex.printStackTrace();
-            }
+//                JasperReport reporte = (JasperReport) JRLoader.loadObject("informes/report1.jasper");
+//                
+////                https://jossjack.wordpress.com/2014/06/15/jasperreport-ireport-en-netbeans/
+//                Class.forName("com.mysql.jdbc.Driver");
+//                Connection conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.6:3306/PRUEBA", "jossjack", "123456");
+//                JasperReport reporte = (JasperReport) JRLoader.loadObject("jack.jasper");
+//                JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, conexion);
+//                JRExporter exporter = new JRPdfExporter();
+//                exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+//                exporter.setParameter(JRExporterParameter.OUTPUT_FILE, new java.io.File("reporte_jackPDF.pdf"));
+//                exporter.exportReport();
+//
+//
+//                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM personas where email = ?");
+//                stmt.setString(1, _usu.getText());
+//                ResultSet rs = stmt.executeQuery();
+//                if(rs.next()){
+//                    System.out.println("Nombre y apellidos " + rs.getString(2)+" "+ rs.getString(3));
+//                    System.out.println("Email " + rs.getString(4));
+//                    try {
+////                        App.setRoot("/views/loadGif");
+//                        App.setRoot("/views/rentCar");
+//                    } catch (IOException ex) {
+//                        ex.printStackTrace();
+//                    }    
+//                }else{
+//                    System.out.println("Cagada");
+//                }
+//               
+//                
+//                
+//            } catch (SQLException ex) {
+//                 ex.printStackTrace();
+//            }
     }
 }
