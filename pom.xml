@@ -25,6 +25,12 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.31</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
     <build>
@@ -84,6 +90,21 @@
                     </execution>
                 </executions>
                 <dependencies>
+                    <dependency>
+                        <groupId>net.sf.jasperreport</groupId>
+                        <artifactId>jasperreports</artifactId>
+                        <version>6.20.0</version>
+                        <scope>system</scope>
+                        <systemPath>C:\Users\NASA\Documents\NetBeansProjects\reportMaven\jasper2.jar</systemPath>
+                        <!-- systemPath>C:\Users\NASA\Documents\NetBeansProjects\reportMaven\jasperreports-6.20.0.jar</systemPath> -->
+                    </dependency>
+                    <!--
+                    <dependency>
+                        <groupId>net.sf.jasperreports</groupId>
+                        <artifactId>jasperreports</artifactId>
+                        <version>6.8.0</version>
+                    </dependency>
+                    --> 
                     <!-- Esta dependencia es el compilador para obtener el informe en .jasper en lugar de jrxml. Creo que realmente solo hace falta el fonts y el jasperreports-->
                     <dependency>
                         <groupId>net.sf.jasperreports</groupId>
@@ -105,11 +126,7 @@
                         <artifactId>jasperreports-fonts</artifactId>
                         <version>6.20.0</version>
                     </dependency>
-                    <dependency>
-                        <groupId>net.sf.jasperreports</groupId>
-                        <artifactId>jasperreports</artifactId>
-                        <version>6.8.0</version>
-                    </dependency>
+  
                     <dependency>
                         <groupId>com.mysql</groupId>
                         <artifactId>mysql-connector-j</artifactId>
@@ -125,14 +142,7 @@
                         <artifactId>jasperreports-functions</artifactId>
                         <version>6.20.0</version>
                     </dependency>
-                    <dependency>
-                        <groupId>net.sf.jasperreport</groupId>
-                        <artifactId>jasperreports</artifactId>
-                        <version>6.20.0</version>
-                        <scope>system</scope>
-                        <!-- <systemPath>${pom.basedir}\jasperreports-6.20.0.jar</systemPath> -->
-                        <systemPath>C:\Users\NASA\Documents\NetBeansProjects\reportMaven\jasperreports-6.20.0.jar</systemPath>
-                    </dependency>
+        
                 </dependencies>
             </plugin>
             <!-- Este plugin tambien compila a jaspeer
