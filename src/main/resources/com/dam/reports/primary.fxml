@@ -10,6 +10,7 @@
       <Label text="Primary View" />
       <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
       <Button mnemonicParsing="false" onAction="#_imprimir" text="Imprimir Report" />
+      <Button mnemonicParsing="false" onAction="#_imprimirOP2" text="Imprimir Report 2" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

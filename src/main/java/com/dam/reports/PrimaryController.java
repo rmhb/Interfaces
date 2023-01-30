@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -28,10 +30,27 @@ public class PrimaryController {
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
-    }
     
+    }
+
+    @FXML
+    public void _imprimir() {
+        Connection conn;
+
+        try {
+
+            conn = DriverManager.getConnection("jdbc:mysql://super.choto.es:3306/alu_rental", "unalumno", "soyunalumno2022");
+            Map<String, Object> map = new HashMap<>();
+            
+            map.put("headding", "REPORT FROM DATABASE CONNECTION");//parameter name should be like it was named inside your report.
+            new GenerarInforme().genarateReport(GenerarInforme.REPORT1, map, conn);
+        } catch (SQLException ex) {
+            System.out.println("Imprimir - Cagada SQL");
+        }
+
+    }
    @FXML 
-   public void _imprimir(){
+   public void _imprimirOP2(){
         Connection conn;
         // Login con bbagg6@tmall.com   vlVO3U
         try {
@@ -49,7 +68,7 @@ public class PrimaryController {
             }
             //JasperReport reporte = (JasperReport) JRLoader.loadObject("informes/report1.jasper");
           //  JasperReport jr = (JasperReport) JRLoader.loadObject("C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\informes\\report1.jasper");
-            JasperReport jr = (JasperReport) JRLoader.loadObject(new File("C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\informes\\report1.jasper"));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(new File("C:\\Users\\NASA\\Documents\\NetBeansProjects\\reports\\src\\main\\resources\\informes\\EjemploReport1.jasper"));
             //                https://jossjack.wordpress.com/2014/06/15/jasperreport-ireport-en-netbeans/
             
             
@@ -60,10 +79,10 @@ public class PrimaryController {
             exporter.exportReport();
 
         } catch (JRException ex) {
-            System.out.println("Cagada");
+            System.out.println("OP2 - Cagada Jasper");
             ex.printStackTrace();
         } catch (SQLException ex) {
-            System.out.println("CAgada 2");
+            System.out.println("OP2 - Cagada  SQL");
         }
    }
     
