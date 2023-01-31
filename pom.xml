@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.dam</groupId>
     <artifactId>reports</artifactId>
@@ -25,7 +25,7 @@
             <artifactId>mysql-connector-j</artifactId>
             <version>8.0.31</version>
         </dependency>
-<!--
+        <!--
         <dependency>
             <groupId>net.sf.jasperreport</groupId>
             <artifactId>jasperreports</artifactId>
@@ -42,12 +42,12 @@
             <version>6.20.0</version>
         </dependency>
         <!--
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports-castor</artifactId>
-            <version>6.20.0</version>
-        </dependency>
--->
+                <dependency>
+                    <groupId>net.sf.jasperreports</groupId>
+                    <artifactId>jasperreports-castor</artifactId>
+                    <version>6.20.0</version>
+                </dependency>
+        -->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports-annotation-processors</artifactId>
@@ -85,23 +85,26 @@
             <artifactId>commons-beanutils</artifactId>
             <version>20030211.134440</version>
         </dependency>
-                     <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy</artifactId>
-                        <version>3.0.7</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-ant</artifactId>
-                        <version>3.0.0-alpha-4</version>
-                        <classifier>groovydoc</classifier>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-all</artifactId>
-                        <version>3.0.0-alpha-4</version>
-                        <classifier>groovydoc</classifier>
-                    </dependency>
+        <!--
+                         <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy</artifactId>
+                            <version>3.0.7</version>
+                        </dependency>
+        -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-ant</artifactId>
+            <version>3.0.0-alpha-4</version>
+            <classifier>groovydoc</classifier>
+        </dependency>
+        <!-- <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>3.0.0-alpha-4</version>
+                <classifier>groovydoc</classifier>
+            </dependency>
+        -->
     </dependencies>
 
     <build>
@@ -154,35 +157,17 @@
                         <id>ide-profile</id>
                         <configuration>
                             <options>
-				<option>${profiler.jvmargs.arg1}</option>
-				<option>${profiler.jvmargs.arg2}</option>
-				<option>${profiler.jvmargs.arg3}</option>
-				<option>${profiler.jvmargs.arg4}</option>
-				<option>${profiler.jvmargs.arg5}</option>
+                                <option>${profiler.jvmargs.arg1}</option>
+                                <option>${profiler.jvmargs.arg2}</option>
+                                <option>${profiler.jvmargs.arg3}</option>
+                                <option>${profiler.jvmargs.arg4}</option>
+                                <option>${profiler.jvmargs.arg5}</option>
                             </options>
                         </configuration>
                     </execution>
                 </executions>
                
             </plugin>
-            <!-- Este plugin tambien compila a jaspeer
-            <plugin>
-                <groupId>com.alexnederlof</groupId>
-                <artifactId>jasperreports-plugin</artifactId>
-                <version>2.8</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jasper</goal>
-                        </goals>
-                        <id>jasper</id>
-                    </execution>
-                </executions>
-                <configuration>
-                    <foo>bar</foo>
-                </configuration>
-            </plugin>
-                        -->
         </plugins>
     </build>
 </project>

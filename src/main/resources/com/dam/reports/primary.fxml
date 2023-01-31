@@ -3,14 +3,22 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="317.0" prefWidth="421.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.reports.PrimaryController">
    <children>
-      <Label text="Primary View" />
       <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
-      <Button mnemonicParsing="false" onAction="#_imprimir" text="Imprimir Report" />
-      <Button mnemonicParsing="false" onAction="#_imprimirOP2" text="Imprimir Report 2" />
+      <Button mnemonicParsing="false" onAction="#_imprimir" text="Informe DOCX" />
+      <Button mnemonicParsing="false" onAction="#_imprimirOP2" text="Informe PDF" />
+      <HBox prefHeight="44.0" prefWidth="381.0" spacing="20.0">
+         <children>
+            <Label prefHeight="44.0" prefWidth="112.0" text="Introduce Letra" />
+            <TextField fx:id="_letra" prefHeight="42.0" prefWidth="149.0" />
+            <Button mnemonicParsing="false" onAction="#_clientesEmpiezan" prefHeight="43.0" prefWidth="81.0" text="Ver" />
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
