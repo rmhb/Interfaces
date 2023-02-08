@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="89a8ffb1-f078-4cae-bcb2-7a2cc3915e39">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT r.id AS n_factura, c.marca, c.modelo, c.num_chasis ,c.color, c.plazas, c.preciodia, r.num_dias_alquiler as cantidad, p.name as nombre, p.surname as Apellidos FROM coche AS c, personas AS p, rental AS r WHERE r.car = c.id AND r.person = p.id]]>
+	</queryString>
+	<field name="n_factura" class="java.lang.Long"/>
+	<field name="marca" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="modelo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_chasis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="color" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plazas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="preciodia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="Apellidos" class="java.lang.String"/>
+	<variable name="Total" class="java.lang.Number" resetType="Column">
+		<variableExpression><![CDATA[$F{cantidad}*$F{preciodia}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="57" y="0" width="100" height="20" forecolor="#99CC00" uuid="37df2f5a-95e1-46b6-9c5d-90e83258cec8"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rental Green]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="57" height="34" uuid="6f56e203-fbf3-48e4-9188-0c01a12c7da5"/>
+				<imageExpression><![CDATA["C:\\Users\\NASA\\Documents\\NetBeansProjects\\IntefaceesUD7\\src\\main\\resources\\img\\logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="40" width="189" height="20" uuid="764967c3-662a-4236-868f-d7ac9828d5e1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[666 666 666      Granada]]></text>
+			</staticText>
+			<image>
+				<reportElement x="217" y="0" width="139" height="79" uuid="2e9c64d6-a5e0-40e2-affd-6bda58ef72c8"/>
+				<imageExpression><![CDATA["C:\\Users\\NASA\\Documents\\NetBeansProjects\\IntefaceesUD7\\src\\main\\resources\\img\\how-to-draw-old-cars-step-14.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="57" y="20" width="117" height="20" uuid="ffa108bd-a36b-4f80-babd-406031d8c672"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Avd. del conocimiento, 12]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="59" width="100" height="20" uuid="3eb3c797-cecd-43ec-9fe4-3db16214c8ca"/>
+				<textFieldExpression><![CDATA[$F{n_factura}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="35" forecolor="#CCFFCC" uuid="f261e172-0252-4aea-b045-3cdd79d27589"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Listado de Vehículos por Marcas]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="111" height="20" uuid="8068c6a3-557c-4e44-abb3-eb2199fdbc3a"/>
+				<text><![CDATA[num_chasis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="75" height="20" uuid="ec872a22-e969-4118-b650-8323eeca78eb"/>
+				<text><![CDATA[marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="0" width="75" height="20" uuid="72a0ddea-e9f6-4c52-ae89-152a031ddcec"/>
+				<text><![CDATA[modelo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="0" width="75" height="20" uuid="f4dd6528-4d07-479a-bfba-6205284631b0"/>
+				<text><![CDATA[cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="0" width="75" height="20" uuid="d7de835d-5ddb-4a57-8666-33ea946bed67"/>
+				<text><![CDATA[preciodia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="0" width="87" height="20" uuid="3405292e-325c-4523-b6c8-52df0ba3bffa"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="111" height="20" uuid="ef01d82a-668a-4b00-a03d-8e6a9c6a1276"/>
+				<textFieldExpression><![CDATA[$F{num_chasis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="0" width="75" height="20" uuid="eae6d786-a448-4998-9bba-b460f18cd851"/>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="0" width="75" height="20" uuid="92a7ee60-c940-4c11-851a-b98544364574"/>
+				<textFieldExpression><![CDATA[$F{modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="0" width="75" height="20" uuid="35782c8b-9ade-4f4a-b320-6641ef3cad2d"/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="393" y="0" width="75" height="20" uuid="a6ec0f73-ba00-44f7-b99a-942c95252e35"/>
+				<textFieldExpression><![CDATA[$F{preciodia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="0" width="87" height="20" uuid="7b8574e4-053c-4411-8c25-2a8e1826ed38"/>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
