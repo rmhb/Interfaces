@@ -12,5 +12,7 @@ module com.dam.rental {
     requires org.json;
 
     opens com.dam.rental to javafx.fxml;
+    opens com.dam.rental.Models to javafx.base; // Esto es para solucionar la parte de que lo abra a la base
     exports com.dam.rental;
+    exports com.dam.rental.Models;
 }
