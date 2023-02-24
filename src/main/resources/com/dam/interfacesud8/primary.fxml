@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.embed.swing.SwingNode?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="_anchorPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.interfacesud8.PrimaryController">
+   <children>
+      <SwingNode fx:id="_swingNodee" layoutX="126.0" layoutY="210.0" />
+      <Button fx:id="_botonAyuda" layoutX="74.0" layoutY="331.0" mnemonicParsing="false" onAction="#_botonAyuda" text="Ayudita" />
+   </children>
+</AnchorPane>

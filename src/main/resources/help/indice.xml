@@ -1,0 +1,5 @@
+<index version="1.0">
+   <indexitem text="App Gestion Taller" target="id_main"/>
+   <indexitem text="Crear un vehículo nuevo" target="id_vista1"/>
+   <indexitem text="Eliminar un vehículo" target="id_vista2"/>
+</index>

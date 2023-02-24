@@ -1,0 +1,5 @@
+<map version="1.0">
+   <mapID target="id_main" url="html/main.html" />
+   <mapID target="id_vista1" url="html/vista1.html" />
+   <mapID target="id_vista2" url="html/vista2.html" />
+</map>

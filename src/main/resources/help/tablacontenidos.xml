@@ -1,0 +1,7 @@
+
+<toc version="1.0">
+   <tocitem text="App Gestion Taller" target="id_main">
+      <tocitem text="Crear un vehículo nuevo" target="id_vista1"/>
+      <tocitem text="Eliminar un vehículo" target="id_vista2"/>
+   </tocitem>
+</toc>
